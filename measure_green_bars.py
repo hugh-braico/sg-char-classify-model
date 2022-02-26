@@ -5,15 +5,20 @@ from pprint import pformat
 
 if __name__ == '__main__':
 
-    GAME_X    = 0
-    GAME_Y    = 0
-    GAME_SIZE = 1094    
-    y1 = GAME_Y + int(GAME_SIZE*0.0734)
+    GAME_SIZE = 1093  
+    y1 = int(GAME_SIZE*0.0734)
     y2 = y1 + 1
-    p1x1 = GAME_X + int(GAME_SIZE*0.146)
-    p1x2 = GAME_X + int(GAME_SIZE*0.409)
-    p2x1 = GAME_X + GAME_SIZE - p1x2
-    p2x2 = GAME_X + GAME_SIZE - p1x1
+
+    # "Outer" bars
+    # p1x1 = int(GAME_SIZE*0.146)
+    # p1x2 = int(GAME_SIZE*0.225)
+
+    # "Inner" bars
+    p1x1 = int(GAME_SIZE*0.330)
+    p1x2 = int(GAME_SIZE*0.409)
+
+    p2x1 = GAME_SIZE - p1x2
+    p2x2 = GAME_SIZE - p1x1
 
     # Get every single green
     greens_list = []
