@@ -1,8 +1,9 @@
 import cv2 as cv
 from glob import glob
 from random import seed, random
+import pathlib
 
-char23_list = ["AN","BB","BW","CE","DB","EL","FI","FU","MF","N","PC","PS","PW","RF","SQ","UM","VA"]
+from character_list import char23_list
 
 # Take a small amount of 720p screenshots for each character and generate a 
 # large dataset from it by varying blur and crop.
@@ -23,6 +24,12 @@ if __name__ == '__main__':
         num_samples = 0
         num_raw_files = len(raw_files)
 
+        # Make output folders if they don't exist
+        test_dir  = f"char23_test/{char_name}"
+        train_dir = f"char23_train/{char_name}"
+        pathlib.Path(test_dir).mkdir(parents=True, exist_ok=True)
+        pathlib.Path(train_dir).mkdir(parents=True, exist_ok=True)
+
         for file_num, raw_file in enumerate(raw_files):
             image = cv.imread(raw_file)
             # Simulate small variance in crop accuracy
@@ -38,9 +45,9 @@ if __name__ == '__main__':
                             ksize = (ksizey, ksizex)
                             blurred_image = cv.blur(cropped_image, ksize)
                             if random() < 0.2:
-                                cv.imwrite(f"char23_test/{char_name}/{file_num+1}_{xcrop}_{ycrop}_{ksizex}_{ksizey}.jpg", blurred_image)
+                                cv.imwrite(f"{test_dir}/{file_num+1}_{xcrop}_{ycrop}_{ksizex}_{ksizey}.jpg", blurred_image)
                             else: 
-                                cv.imwrite(f"char23_train/{char_name}/{file_num+1}_{xcrop}_{ycrop}_{ksizex}_{ksizey}.jpg", blurred_image)
+                                cv.imwrite(f"{train_dir}/{file_num+1}_{xcrop}_{ycrop}_{ksizex}_{ksizey}.jpg", blurred_image)
                             num_samples += 1
 
         print(f"generated {num_samples} sample images from {num_raw_files} raw files")

@@ -1,0 +1,2 @@
+char1_list  = ["AN","BB","BD","BW","CE","DB","EL","FI","FU","MF",    "PC","PS","PW","RF","SQ","UM","VA"]
+char23_list = ["AN","BB","BD","BW","CE","DB","EL","FI","FU","MF","N","PC","PS","PW","RF","SQ","UM","VA"]

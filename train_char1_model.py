@@ -9,7 +9,7 @@ from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D
 from keras.layers import Activation, Dropout, Flatten, Dense
 
-char1_list = ["AN","BB","BW","CE","DB","EL","FI","FU","MF","PC","PS","PW","RF","SQ","UM","VA"]
+from character_list import char1_list
 
 if __name__ == '__main__':
 

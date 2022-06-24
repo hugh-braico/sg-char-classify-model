@@ -8,7 +8,7 @@ from keras.models import load_model
 from glob import glob
 import cv2 as cv
 
-char23_list = ["AN","BB","BW","CE","DB","EL","FI","FU","MF","N","PC","PS","PW","RF","SQ","UM","VA"]
+from character_list import char23_list
 
 if __name__ == '__main__':
     
